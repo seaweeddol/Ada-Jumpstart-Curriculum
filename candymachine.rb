@@ -1,7 +1,9 @@
+# candy machine program that shows user options and allows them to 'buy' something if they have enough money
 print "Welcome to The (Virtual) Vending Machine!\n
 How much money do you have? "
   money = gets.chomp.to_f
 
+# check if user has enough money, and display options if so
 if money < 0.5
   print "You can't afford anything here! Go somewhere else."
 else
@@ -16,6 +18,7 @@ Enter the letter of the item you want > "
 
   choice = gets.chomp.upcase
 
+# assign cost and selection value to variables
   if choice == "A"
     cost = 0.5
     selection = "gum"
@@ -33,8 +36,10 @@ Enter the letter of the item you want > "
     selection = "ice cream"
   end
 
+# check if user choice is valid
   if !cost
     print "That's not an option, get out of here!"
+# check if user can afford selection. if so show how much money they have left over
   elsif money >= cost
       print "You bought #{selection}! You have $#{'%.2f' % (money - cost)} left."
     else
