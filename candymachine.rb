@@ -19,19 +19,20 @@ Enter the letter of the item you want > "
   choice = gets.chomp.upcase
 
 # assign cost and selection value to variables
-  if choice == "A"
+  case choice
+  when "A"
     cost = 0.5
     selection = "gum"
-  elsif choice == "B"
+  when "B"
     cost = 0.75
     selection = "chips"
-  elsif choice == "C"
+  when "C"
     cost = 1.00
     selection = "soda"
-  elsif choice == "D"
+  when "D"
     cost = 1.50
     selection = "cookie"
-  elsif choice == "E"
+  when "E"
     cost = 2.00
     selection = "ice cream"
   end
