@@ -1,19 +1,24 @@
 # An electronic election program that tracks votes, total votes, and determines a winner.
 
+candidates = ['Abraham Lincoln', 'Benjamin Franklin', 'Calvin Coolidge']
+
 puts "It's time to vote! Use the letter in parentheses () to vote for your favorite candidate.
 
 The candidates are:
-(A)braham Lincoln
-(B)enjamin Franklin
-(C)alvin Coolidge"
+#{candidates[0]}
+#{candidates[1]}
+#{candidates[2]}
 
-total_votes = 1
+When you are done voting, type 'done'"
+
+total_candidates = 3
+total_votes = 0
 total_A = 0
 total_B = 0
 total_C = 0
 
 while total_votes <= 10
-  print "Vote ##{total_votes}: "
+  print "Vote ##{total_votes + 1}: "
   vote = gets.chomp.upcase
 
 
