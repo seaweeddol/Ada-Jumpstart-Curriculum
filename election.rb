@@ -1,64 +1,46 @@
 # An electronic election program that tracks votes, total votes, and determines a winner.
 
 candidates = ['Abraham Lincoln', 'Benjamin Franklin', 'Calvin Coolidge']
+votes = [0, 0, 0]
+total_candidates = candidates.length
 
-puts "It's time to vote! Use the letter in parentheses () to vote for your favorite candidate.
+puts "It's time to vote! Select one of the candidates below or write one in.
 
 The candidates are:
 #{candidates[0]}
 #{candidates[1]}
 #{candidates[2]}
 
-When you are done voting, type 'done'"
+When everyone is done voting, type 'done'"
 
-total_candidates = 3
 total_votes = 0
-total_A = 0
-total_B = 0
-total_C = 0
+vote = ""
 
-while total_votes <= 10
+while vote != "Done"
   print "Vote ##{total_votes + 1}: "
-  vote = gets.chomp.upcase
+  vote = gets.chomp.split.map(&:capitalize).join(' ')
+  puts vote
 
-
-  if vote != "A" && vote != "B" && vote != "C"
-    puts "That's not a valid option! Try again."
-    # if not one of the provided choices,
-    # candidate_count = 3
-    # candidate_count += 1
-    # candidate_#{candidate_count} = vote
-    # total_#{candidate_count} += 1
-    # but then how do I add to existing write in candidate? need to rewrite if then to programmatically assign value to a variable and then add to the appropriate candidate
+  if candidates.include?(vote)
+    votes[candidates.index(vote)] += 1
   else
-    if vote == "A"
-      total_A += 1
-    elsif vote == "B"
-      total_B += 1
-    else
-      total_C += 1
-    end
-    total_votes += 1
+    total_candidates += 1
+    votes[total_candidates] = 1
+    candidates[total_candidates] = vote
   end
+
+  total_votes += 1
 end
 
 winner = ""
 
-if total_A > total_B && total_A > total_C
-  winner = "Abraham Lincoln"
-elsif total_B > total_A && total_B > total_C
-  winner = "Benjamin Franklin"
-elsif total_C > total_A && total_C > total_B
-  winner = "Calvin Coolidge"
-else
-  winner = "It was a tie!"
-end
+puts votes
 
 print "\n|||ELECTION RESULTS|||
 
-Vote Summary:
-Abraham Lincon - #{total_A} vote(s)
-Benjamin Franklin - #{total_B} vote(s)
-Calvin Coolidge - #{total_C} vote(s)
-
-WINNER: #{winner}"
+Vote Summary:"
+candidates.each do |n|
+  x = 0
+  puts "#{n} - #{votes[x]}"
+  x += 1
+end
