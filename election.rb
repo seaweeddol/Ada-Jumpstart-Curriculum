@@ -45,7 +45,7 @@ Vote Summary:
 # print out candidate and number of votes on new line
 x = 0
 candidates.each do |n|
-  if votes[x] > 1
+  if votes[x] = 1
     puts "#{n} - #{votes[x]} votes"
   else
     puts "#{n} - #{votes[x]} vote"
