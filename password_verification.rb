@@ -10,7 +10,13 @@ until password_valid
     if password =~ /\d/
       # check if password includes a special character
       if password =~ /@|%|\*|!/
-        puts "good job!"
+        print "Please enter your password again to confirm: "
+        password_verify = gets.chomp
+        until password_verify == password
+          print "Your password did not match. Please enter it again: "
+          password_verify = gets.chomp
+        end
+        puts "Your password has been accepted."
         password_valid = true
       else
         puts "Password must contain a special character (@, %, *, or !)"
