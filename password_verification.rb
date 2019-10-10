@@ -27,7 +27,7 @@ until password_valid
     if password !~ /@|%|\*|!/
       password_error.push("contain a special character (@, %, *, or !)")
     end
-    puts password_error
+    puts "Password must #{password_error * ", "}"
     password_error = []
   end
 end
