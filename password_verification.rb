@@ -14,18 +14,20 @@ until password_valid
     end
     puts "Your password has been accepted."
     password_valid = true
-  # check if password is at least 8 characters long
   else
+    # check if password is at least 8 characters long
     if password.length < 8
       password_error.push("be at least 8 characters long")
+    end
     # check if password includes a number
-    elsif password !=~ /\d/
+    if password !~ /\d/
       password_error.push("contain a number")
+    end
     # check if password includes a special character
-    elsif password !=~ /@|%|\*|!/
+    if password !~ /@|%|\*|!/
       password_error.push("contain a special character (@, %, *, or !)")
     end
-    print password_error
+    puts password_error
     password_error = []
   end
 end
