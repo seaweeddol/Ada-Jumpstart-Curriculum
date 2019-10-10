@@ -4,7 +4,7 @@ until password_valid
   print "Enter a new password: "
   password = gets.chomp
   if password =~ /\d/
-    if password =~ /@ + % + \* + !/
+    if password =~ /@|%|\*|!/
       puts "good job!"
       password_valid = true
     end
