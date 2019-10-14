@@ -20,6 +20,9 @@ end
 
 # generate email address
 5.times do |i|
+  # if student_name[i].split.size > 2
+  #   student_email[i] = student_name[i].split.map(&:first).join + student_name[i].split.last + student_ID[i][3,3] + "@adadevelopersacademy.org"
+  # end
   student_email[i] = student_name[i][0] + student_name[i].split.last + student_ID[i][3,3] + "@adadevelopersacademy.org"
   puts student_email[i]
 end
