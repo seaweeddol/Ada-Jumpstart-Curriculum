@@ -12,4 +12,12 @@ end
   hash[:user_input].push(gets.chomp.to_i)
 end
 
-puts hash
+hash2 = {}
+
+hash.values.each do |num|
+  num.each do |i|
+    hash2[i] = 0
+  end
+end
+
+puts hash2
