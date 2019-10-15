@@ -99,4 +99,6 @@ sentence.length.times do |i|
   letter_frequency[sentence[i].ord - 65] += 1
 end
 
-puts letter_frequency
+alphabet.length.times do |i|
+  puts "#{alphabet[i]}: #{letter_frequency[i]}"
+end
