@@ -77,13 +77,25 @@
 
 # 7. Create an array of people that are invited to a party. Allow the user to ask if a certain person is invited to the party. If the person is on the invitation list respond INVITED otherwise respond NOT INVITED.
 
-party_people = ["Nadia", "Jennifer", "Rachel", "Jessica", "Beth", "Hailey", "Ari", "Drea", "Taarna", "Skye", "Johanna"]
+# party_people = ["Nadia", "Jennifer", "Rachel", "Jessica", "Beth", "Hailey", "Ari", "Drea", "Taarna", "Skye", "Johanna"]
+#
+# print "Who should we check the party list for? "
+# party_check = gets.chomp.capitalize
+#
+# if party_people.include?(party_check)
+#   puts "INVITED"
+# else
+#   puts "NOT INVITED"
+# end
 
-print "Who should we check the party list for? "
-party_check = gets.chomp.capitalize
+# 8. Have the user enter in a sentence. Then, using an array, store the frequency of each letter of the alphabet from the sentence. Print out the frequency of each letter. Do not count uppercase and lowercase letters differently.
 
-if party_people.include?(party_check)
-  puts "INVITED"
-else
-  puts "NOT INVITED"
+print "Enter a sentence: "
+sentence = gets.chomp.upcase.delete(' ')
+alphabet = Array.new(26, 0)
+
+sentence.length.times do |i|
+  alphabet[sentence[i].ord - 65] += 1
 end
+
+puts alphabet
