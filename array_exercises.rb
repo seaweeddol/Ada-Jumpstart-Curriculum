@@ -92,10 +92,11 @@
 
 print "Enter a sentence: "
 sentence = gets.chomp.upcase.delete(' ')
-alphabet = Array.new(26, 0)
+alphabet = ("A".."Z").to_a
+letter_frequency = Array.new(26, 0)
 
 sentence.length.times do |i|
-  alphabet[sentence[i].ord - 65] += 1
+  letter_frequency[sentence[i].ord - 65] += 1
 end
 
-puts alphabet
+puts letter_frequency
