@@ -31,11 +31,25 @@
 
 # Create an array to store the following words: firetruck, fire drill, fire hydrant, firefighter, fireproof, fire station, fire hose. Then write code that uses the array to print out truck, drill, hydrant, fighter, proof, station, hose without modifying the array.
 
-fire_array = ["firetruck", "fire drill", "fire hydrant", "firefighter", "fireproof", "fire station", "fire hose"]
+# fire_array = ["firetruck", "fire drill", "fire hydrant", "firefighter", "fireproof", "fire station", "fire hose"]
+#
+# fire_array.length.times do |i|
+#   puts fire_array[i].slice!("fire")
+#   puts fire_array[i]
+# end
+#
+# puts fire_array
 
-fire_array.each do |word|
-  word.slice!("fire")
-  print word
+# Create an array to store the amount of money spent on 4 people during the Holidays. Have the user enter in the amount spent on each person. Print the total spent on all the people. Total money spent should be displayed with a dollar sign, decimal point, and only 2 digits after the decimal.
+
+money_spent = []
+people = ["Jenny", "John", "Roberta", "Max"]
+total = 0
+
+4.times do |i|
+  print "How much was spent on #{people[i]}? "
+  money_spent[i] = gets.chomp.to_f
+  total += money_spent[i]
 end
 
-puts fire_array
+puts "$#{total.round(2)}"
