@@ -90,15 +90,26 @@
 
 # 8. Have the user enter in a sentence. Then, using an array, store the frequency of each letter of the alphabet from the sentence. Print out the frequency of each letter. Do not count uppercase and lowercase letters differently.
 
-print "Enter a sentence: "
-sentence = gets.chomp.upcase.delete(' ')
-alphabet = ("A".."Z").to_a
-letter_frequency = Array.new(26, 0)
+# print "Enter a sentence: "
+# sentence = gets.chomp.upcase.delete(' ')
+# alphabet = ("A".."Z").to_a
+# letter_frequency = Array.new(26, 0)
+#
+# sentence.length.times do |i|
+#   letter_frequency[sentence[i].ord - 65] += 1
+# end
+#
+# alphabet.length.times do |i|
+#   puts "#{alphabet[i]}: #{letter_frequency[i]}"
+# end
 
-sentence.length.times do |i|
-  letter_frequency[sentence[i].ord - 65] += 1
+# 9. Create an array of size 8. Fill the array randomly with 0’s and 1’s. Print out the array so that it appears as a binary number. Calculate and print out the decimal value of that binary number.
+
+size8_array = []
+
+8.times do |i|
+  size8_array[i] = rand(0..1)
+  print size8_array[i]
 end
 
-alphabet.length.times do |i|
-  puts "#{alphabet[i]}: #{letter_frequency[i]}"
-end
+print "\n#{size8_array.join('').to_i(2)}"
