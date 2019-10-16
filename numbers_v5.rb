@@ -12,15 +12,26 @@ end
   hash[:user_input].push(gets.chomp.to_i)
 end
 
-hash2 = {}
+hash2 = {
+  computer_generated: {},
+  user_generated: {}
+}
 
-hash.values.each do |num|
-  num.each do |i|
-    if hash2.key?(i)
-      hash2[i] += 1
-    else
-      hash2[i] = 0
-    end
+hash[:random_numbers].each do |i|
+  puts i
+  if hash2[:computer_generated].key?(i)
+    hash2[:computer_generated][i] += 1
+  else
+    hash2[:computer_generated][i] = 1
+  end
+end
+
+hash[:user_input].each do |i|
+  puts i
+  if hash2[:user_generated].key?(i)
+    hash2[:user_generated][i] += 1
+  else
+    hash2[:user_generated][i] = 1
   end
 end
 
