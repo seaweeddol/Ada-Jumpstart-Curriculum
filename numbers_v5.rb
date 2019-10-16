@@ -37,35 +37,30 @@ puts hash
 
 number = 0
 times = 0
-randomly_generated = ""
-user_genereated = ""
+shows_text = ""
+generated_text = ""
 
 3.times do |i|
   print "What number do you want information about? "
   number = gets.chomp.to_i
   puts "Using only the first hash:"
-  if hash[:random_numbers].include?(number)
-    hash[:random_numbers].each do |num|
+  hash.values.each do |array|
+    array.each do |num|
       if num == number
         times += 1
       end
-    end
-    randomly_generated = "shows up #{times} time(s)"
-  else
-    randomly_generated = "did not show"
-  end
-  puts "The number, #{number}, #{randomly_generated} in the randomly generated numbers."
-  times = 0
-  if hash[:user_input].include?(number)
-    hash[:user_input].each do |num|
-      if num == number
-        times += 1
+      if times > 0
+        shows_text = "shows up #{times} time(s)"
+      else
+        shows_text = "did not show"
+      end
+      if array[0] == :random_numbers
+        generated_text = "in the randomly generated numbers."
+      else
+        generated_text = "in the user generated numbers."
       end
     end
-    randomly_generated = "shows up #{times} time(s)"
-  else
-    randomly_generated = "did not show"
+    puts "The number, #{number}, #{shows_text} #{generated_text}"
+    times = 0
   end
-  puts "The number, #{number}, #{randomly_generated} in the user generated numbers."
-  times = 0
 end
