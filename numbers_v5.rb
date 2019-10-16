@@ -18,7 +18,6 @@ hash2 = {
 }
 
 hash[:random_numbers].each do |i|
-  puts i
   if hash2[:computer_generated].key?(i)
     hash2[:computer_generated][i] += 1
   else
@@ -27,7 +26,6 @@ hash[:random_numbers].each do |i|
 end
 
 hash[:user_input].each do |i|
-  puts i
   if hash2[:user_generated].key?(i)
     hash2[:user_generated][i] += 1
   else
@@ -35,4 +33,24 @@ hash[:user_input].each do |i|
   end
 end
 
-puts hash2
+number = 0
+times = 0
+randomly_generated = ""
+user_genereated = ""
+
+3.times do |i|
+  print "What number do you want information about? "
+  number = gets.chomp.to_i
+  if hash[:random_numbers].include?(number)
+    hash[:random_numbers].each do |num|
+      if num == number
+        times += 1
+      end
+    end
+    randomly_generated = "shows up #{times} time(s)"
+  else
+    randomly_generated = "did not show"
+  end
+  puts "The number, #{number}, #{randomly_generated} in the randomly generated numbers."
+  times = 0
+end
