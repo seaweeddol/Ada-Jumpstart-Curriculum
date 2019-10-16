@@ -54,7 +54,7 @@ generated_text = ""
       else
         shows_text = "did not show"
       end
-      if array[0] == :random_numbers
+      if hash.values[0] == array
         generated_text = "in the randomly generated numbers."
       else
         generated_text = "in the user generated numbers."
