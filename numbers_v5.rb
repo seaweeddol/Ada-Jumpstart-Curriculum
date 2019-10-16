@@ -33,6 +33,8 @@ hash[:user_input].each do |i|
   end
 end
 
+puts hash
+
 number = 0
 times = 0
 randomly_generated = ""
@@ -41,6 +43,7 @@ user_genereated = ""
 3.times do |i|
   print "What number do you want information about? "
   number = gets.chomp.to_i
+  puts "Using only the first hash:"
   if hash[:random_numbers].include?(number)
     hash[:random_numbers].each do |num|
       if num == number
@@ -52,5 +55,17 @@ user_genereated = ""
     randomly_generated = "did not show"
   end
   puts "The number, #{number}, #{randomly_generated} in the randomly generated numbers."
+  times = 0
+  if hash[:user_input].include?(number)
+    hash[:user_input].each do |num|
+      if num == number
+        times += 1
+      end
+    end
+    randomly_generated = "shows up #{times} time(s)"
+  else
+    randomly_generated = "did not show"
+  end
+  puts "The number, #{number}, #{randomly_generated} in the user generated numbers."
   times = 0
 end
