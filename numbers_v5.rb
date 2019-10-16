@@ -16,7 +16,11 @@ hash2 = {}
 
 hash.values.each do |num|
   num.each do |i|
-    hash2[i] = 0
+    if hash2.key?(i)
+      hash2[i] += 1
+    else
+      hash2[i] = 0
+    end
   end
 end
 
