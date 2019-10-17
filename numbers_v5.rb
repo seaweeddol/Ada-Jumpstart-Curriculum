@@ -34,6 +34,7 @@ hash[:user_input].each do |i|
 end
 
 puts hash
+puts hash2
 
 number = 0
 times = 0
@@ -59,6 +60,22 @@ generated_text = ""
       else
         generated_text = "in the user generated numbers."
       end
+    end
+    puts "The number, #{number}, #{shows_text} #{generated_text}"
+    times = 0
+  end
+  puts "Using only the second hash:"
+  hash2.values.each do |list|
+    if list.has_key?(number)
+      times = list[number]
+      shows_text = "shows up #{times} time(s)"
+    else
+      shows_text = "did not show"
+    end
+    if hash2.values[0] == list
+      generated_text = "in the randomly generated numbers."
+    else
+      generated_text = "in the user generated numbers."
     end
     puts "The number, #{number}, #{shows_text} #{generated_text}"
     times = 0
