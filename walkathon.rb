@@ -1,6 +1,5 @@
 walkers = []
 total = 0
-goal_met = "YES"
 
 print "Enter the earning goal for the walk-a-thon: $"
 earning_goal = gets.chomp.to_f
@@ -19,11 +18,13 @@ puts "Please enter the number of laps completed by each person."
 end
 
 walkers.each do |hash|
-  total += hash["laps_walked"]
+  total += hash["amount_earned"]
 end
 
 if total < earning_goal
-  goal_met = "NO"
+  goal_met = "The goal was missed by #{earning_goal - total}"
+else
+  goal_met = "The goal was achieved and beaten by #{earning_goal - total}"
 end
 
 puts "Highest earning walker: ##{}
