@@ -1,4 +1,6 @@
 walkers = []
+total = 0
+goal_met = "YES"
 
 print "Enter the earning goal for the walk-a-thon: $"
 earning_goal = gets.chomp.to_f
@@ -12,5 +14,18 @@ puts "Please enter the number of laps completed by each person."
   walkers[i] = {}
   print "Walker ##{i + 1}: "
   walkers[i]["laps_walked"] = gets.chomp.to_i
-  puts "     Earned $#{walkers[i]["laps_walked"] * lap_amount}"
+  walkers[i]["amount_earned"] = walkers[i]["laps_walked"] * lap_amount
+  puts "     Earned $#{walkers[i]["amount_earned"]}"
 end
+
+walkers.each do |hash|
+  total += hash["laps_walked"]
+end
+
+if total < earning_goal
+  goal_met = "NO"
+end
+
+puts "Highest earning walker: ##{}
+Total amount earned: $#{total}
+Goal met? #{goal_met}"
