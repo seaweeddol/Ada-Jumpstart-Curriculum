@@ -1,6 +1,6 @@
 # Write a Ruby program that allows two users to play a game of Nim together.
 
-players = []
+$players = {}
 $piles = {}
 
 # create piles
@@ -35,11 +35,14 @@ def pile_check()
 end
 
 # ask user for name (player1)
-print "What is player 1's name? "
-players.push(gets.chomp.capitalize)
-# ask second user for name (player2)
-print "What is player 2's name? "
-players.push(gets.chomp.capitalize)
+(1..2).each do |i|
+  $players[:"player#{i}"] = {}
+  print "What is player #{i}'s name? "
+  $players[:"player#{i}"][:name] = gets.chomp.capitalize
+  $players[:"player#{i}"][:score] = 0
+end
+
+puts $players
 
 # ask user for game difficulty
 print "Select your game difficulty
@@ -59,26 +62,30 @@ else
 end
 
 # randomly decide first player (0..1)
-first_player = players[rand(0..1)]
-puts "The first player is #{first_player}"
+first_player = $players.keys.sample
+puts "The first player is #{$players[:"#{first_player}"][:"name"]}"
 
-turn = 0
+turn = 1
 
 until $piles.values.all? {|a| a == 0}
   puts $piles
-  if players[turn % 2] == first_player
-    print "#{players[0]}, choose a pile: "
+  if $players[:"player#{[turn % 2]}"] == first_player
+    print "#{$players[:"player#{turn % 2 + 1}"][:"name"]}, choose a pile: "
     pile_check()
   else
-    print "#{players[1]}, choose a pile: "
+    print "#{$players[:"player#{turn % 2 + 1}"][:"name"]}, choose a pile: "
     pile_check()
   end
   turn += 1
 end
 
 # after game finishes:
-puts "#{players[(turn - 1) % 2]} is the winner!"
-# print winner
+$players[:"player#{turn % 2 + 1}"][:"score"] += 1
+puts "#{$players[:"player#{turn % 2 + 1}"][:"name"]} is the winner!"
+
+print "Game summary:
+#{$players[:"player1"][:"name"]}: #{$players[:"player1"][:"score"]}
+#{$players[:"player2"][:"name"]}: #{$players[:"player2"][:"score"]}"
 # print player #1 score
 # print player #1 move summary
 # print player #2 score
