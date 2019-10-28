@@ -44,7 +44,9 @@ def pile_check()
   return $players[:"player#{$turn % 2 + 1}"][:moves].push("#{pile_choice}: #{amount}")
 end
 
-def print_arrays(array)
+# print piles in single line
+def print_piles(array)
+  print "\n"
   array.to_a.each do |i|
     print "#{i[0]}: #{i[1]}   "
   end
@@ -63,7 +65,7 @@ end
 # run program until user wants to stop
 until continue == "N"
   # ask user for game difficulty
-  print "Select your game difficulty (easy, medium, hard): "
+  print "\nSelect your game difficulty (easy, medium, hard): "
   difficulty = gets.chomp.downcase
 
   # create piles hash based on difficult selected
@@ -77,11 +79,11 @@ until continue == "N"
 
   # randomly decide first player
   first_player = $players.keys.sample
-  puts "The first player is #{$players[:"#{first_player}"][:"name"]}"
+  puts "\nThe first player is #{$players[:"#{first_player}"][:"name"]}"
 
   # run game until all piles are empty
   until $piles.values.all? {|a| a == 0}
-    print_arrays($piles)
+    print_piles($piles)
     if $players[:"player#{[$turn % 2]}"] == first_player
       print "#{$players[:"player#{$turn % 2 + 1}"][:"name"]}, choose a pile: "
     else
@@ -96,19 +98,20 @@ until continue == "N"
   $players[:"player#{$turn % 2 + 1}"][:"score"] += 1
 
   # print out game summary
-  puts "#{$players[:"player#{$turn % 2 + 1}"][:"name"]} is the winner!"
-  puts "Move summary:
+  puts "\n#{$players[:"player#{$turn % 2 + 1}"][:"name"]} is the winner!"
+  puts "\nMove summary:
   #{$players[:"player1"][:"name"]}'s moves: #{$players[:"player1"][:"moves"].join(', ')}
   #{$players[:"player2"][:"name"]}'s moves: #{$players[:"player2"][:"moves"].join(', ')}"
 
-  print "Would you like to play again (Y/N): "
+  print "\nWould you like to play again (Y/N): "
   continue = gets.chomp.upcase
 
-  #reset moves
+  #reset game
   $players[:"player1"][:"moves"] = []
   $players[:"player2"][:"moves"] = []
+  $piles = {}
 end
 
-print "\nTotal score:
+print "\nTotal score
 #{$players[:"player1"][:"name"]}: #{$players[:"player1"][:"score"]}
 #{$players[:"player2"][:"name"]}: #{$players[:"player2"][:"score"]}"
