@@ -44,6 +44,13 @@ def pile_check()
   return $players[:"player#{$turn % 2 + 1}"][:moves].push("#{pile_choice}: #{amount}")
 end
 
+def print_arrays(array)
+  array.to_a.each do |i|
+    print "#{i[0]}: #{i[1]}   "
+  end
+  print "\n"
+end
+
 # ask each user for name and initialize hash keys
 (1..2).each do |i|
   $players[:"player#{i}"] = {}
@@ -74,14 +81,14 @@ until continue == "N"
 
   # run game until all piles are empty
   until $piles.values.all? {|a| a == 0}
-    puts $piles
+    print_arrays($piles)
     if $players[:"player#{[$turn % 2]}"] == first_player
       print "#{$players[:"player#{$turn % 2 + 1}"][:"name"]}, choose a pile: "
     else
       print "#{$players[:"player#{$turn % 2 + 1}"][:"name"]}, choose a pile: "
     end
 
-    $players[:"player#{$turn % 2 + 1}"][:"moves"].push(pile_check())
+    pile_check()
     $turn += 1
   end
 
@@ -90,9 +97,9 @@ until continue == "N"
 
   # print out game summary
   puts "#{$players[:"player#{$turn % 2 + 1}"][:"name"]} is the winner!"
-  print "Move summary:
-  #{$players[:"player1"][:"name"]} moves: #{$players[:"player1"][:"moves"]}
-  #{$players[:"player2"][:"name"]} moves: #{$players[:"player2"][:"moves"]}"
+  puts "Move summary:
+  #{$players[:"player1"][:"name"]}'s moves: #{$players[:"player1"][:"moves"].join(', ')}
+  #{$players[:"player2"][:"name"]}'s moves: #{$players[:"player2"][:"moves"].join(', ')}"
 
   print "Would you like to play again (Y/N): "
   continue = gets.chomp.upcase
